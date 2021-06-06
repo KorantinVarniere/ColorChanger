@@ -18,8 +18,6 @@ public abstract class Optimisation {
 		ButtonsBar.optimiser.setOnMouseClicked(e -> {
 			Ecran ecran = (Ecran) ((Stage) (((Button) (e.getSource())).getScene().getWindow())).getScene().getRoot();
 			Variables.prevColors = ecran.getGridColor().getColors();
-			
-			
 			ArrayList<Integer> indice = colorChanged(couleur);
 			if (indice.size() == 0) {
 				Ecran.erreur.setText("Veuillez modifier une couleur");

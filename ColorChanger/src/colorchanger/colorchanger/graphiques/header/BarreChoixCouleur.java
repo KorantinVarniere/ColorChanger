@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import colorchanger.colorchanger.config.Variables;
 import colorchanger.colorchanger.enums.Methode;
 import colorchanger.colorchanger.enums.Mode;
+import colorchanger.colorchanger.enums.OneDiff;
 import colorchanger.colorchanger.graphiques.Ecran;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -38,26 +39,36 @@ public class BarreChoixCouleur extends GridPane {
 	private RadioButton hexa = new RadioButton("Hexadécimal");
 	private HBox mode = new HBox(100);
 	
+	private RadioButton diffColors = new RadioButton("Différentes");
+	private RadioButton oneColors = new RadioButton("Semblables");
+	private HBox modeCoulors = new HBox(100);
+	
 	private ColumnConstraints col1 = new ColumnConstraints();
 	private ColumnConstraints col2 = new ColumnConstraints();
 	
 	private Separator sep = new Separator();
+	private Separator sep2 = new Separator();
 	
 	public BarreChoixCouleur(Ecran ecran) {
-		setMargin(this.sep, new Insets(0, 15, 0, 15));
+		setMargin(this.sep, new Insets(0, 10, 0, 10));
+		setMargin(this.sep2, new Insets(0, 10, 0, 10));
 		
 		this.ecran = ecran;
 		
 		this.sep.setPadding(new Insets(0));
+		this.sep2.setPadding(new Insets(0));
 		
 		this.manuel.setSelected(true);
 		this.rgb.setSelected(true);
+		this.diffColors.setSelected(true);
 		
 		this.methode.getChildren().addAll(this.manuel, this.auto);
 		this.mode.getChildren().addAll(this.rgb, this.hexa);
+		this.modeCoulors.getChildren().addAll(this.diffColors,this.oneColors);
 		
 		this.methode.setPadding(new Insets(20, 0, 0, 100));
 		this.mode.setPadding(new Insets(15, 0, 0, 100));
+		this.modeCoulors.setPadding(new Insets(15, 0, 0, 100));
 		
 		this.nbCouleurs.setStyle("-fx-font-size: 18;");
 		this.choixCouleurs.setStyle("-fx-font-size: 18;");
@@ -80,8 +91,11 @@ public class BarreChoixCouleur extends GridPane {
 		
 		this.add(this.choixCouleurs, 1, 0);
 		this.add(this.methode, 1, 1);
-		this.add(this.sep, 1, 2);
-		this.add(this.mode, 1, 3);
+		this.add(this.sep2, 1, 2);
+		this.add(this.modeCoulors, 1, 3);
+		this.add(this.sep, 1, 4);
+		this.add(this.mode, 1, 5);
+
 		
 		this.ajouterEvenements();
 	}
@@ -178,6 +192,30 @@ public class BarreChoixCouleur extends GridPane {
 				if (newValue) {
 					rgb.setSelected(false);
 					Variables.mode = Mode.HEXA;
+					ecran.changeAllLabelGrid();
+				}
+			}
+			
+		});
+		
+		this.diffColors.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if (newValue) {
+					oneColors.setSelected(false);
+					Variables.ondediff=OneDiff.DIFF;
+					ecran.changeAllLabelGrid();
+				}
+			}
+			
+		});
+		
+		this.oneColors.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if (newValue) {
+					diffColors.setSelected(false);
+					Variables.ondediff = OneDiff.ONE;
 					ecran.changeAllLabelGrid();
 				}
 			}

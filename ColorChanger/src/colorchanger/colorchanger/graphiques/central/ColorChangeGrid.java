@@ -11,6 +11,7 @@ import colorchanger.colorchanger.comparators.ColorComparator;
 import colorchanger.colorchanger.config.Variables;
 import colorchanger.colorchanger.enums.Methode;
 import colorchanger.colorchanger.enums.Mode;
+import colorchanger.colorchanger.enums.OneDiff;
 import colorchanger.colorchanger.events.Optimisation;
 import colorchanger.colorchanger.graphiques.Ecran;
 import colorchanger.colorchanger.graphiques.PickColor;
@@ -59,8 +60,9 @@ public class ColorChangeGrid extends GridPane {
 					this.couleurs.add(rect);
 				}
 			}
-		} else {
+		} else if (Variables.ondediff.equals(OneDiff.DIFF)){
 			Ecran.erreur.setText("");
+			
 			this.couleurs = new ArrayList<Rectangle>(Variables.nbCouleurs);
 			for (int i = 0; i < Variables.nbCouleurs; i++) {
 				if (i < list.size()) {
@@ -68,26 +70,19 @@ public class ColorChangeGrid extends GridPane {
 				} else {
 					Random rand = new Random();
 					Rectangle rect = new Rectangle();
-					double red = rand.nextDouble();
-					double green = rand.nextDouble();
-					double blue = rand.nextDouble();
 					rect.setWidth(40);
 					rect.setHeight(40);
-					rect.setFill(Color.color(red, green, blue));
+					rect.setFill(Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble()));
 					this.couleurs.add(rect);
 				}
 			}
-		}
-		/*  une seule couleur avec plusieur intancité
-		 * Ecran.erreur.setText("");
+		}else {
+		  Ecran.erreur.setText("");
 			this.couleurs = new ArrayList<Rectangle>(Variables.nbCouleurs);
 			Random rand = new Random();
 			int red = rand.nextInt(255/Variables.nbCouleurs);
-			System.out.println(red);
 			int green = rand.nextInt(255/Variables.nbCouleurs);
-			System.out.println(green);
 			int blue = rand.nextInt(255/Variables.nbCouleurs);
-			System.out.println(blue);
 			for (int i = 0; i < Variables.nbCouleurs; i++) {
 				if (i < list.size()) {
 					this.couleurs.add(list.get(i));
@@ -99,7 +94,7 @@ public class ColorChangeGrid extends GridPane {
 					this.couleurs.add(rect);
 				}
 			}
-		 */
+		}
 
 		Optimisation.optimiserColor(Variables.customColors);
 		Collections.sort(this.couleurs, new ColorComparator());

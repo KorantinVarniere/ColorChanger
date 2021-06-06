@@ -33,8 +33,8 @@ public class Ecran extends VBox {
 	
 	public Ecran() {
 		erreur.setTextFill(Color.RED);
-		this.sep1.setPadding(new Insets(15, 15, 70, 15));
-		this.sep2.setPadding(new Insets(70, 15, 15, 15));
+		this.sep1.setPadding(new Insets(15, 15, 150, 15));
+		this.sep2.setPadding(new Insets(150, 15, 15, 15));
 		erreur.setAlignment(Pos.BOTTOM_CENTER);
 		this.getChildren().addAll(this.helpBar, this.barreChoixCouleur, this.sep1, this.gridColor, this.sep2,erreur, this.bb);
 		

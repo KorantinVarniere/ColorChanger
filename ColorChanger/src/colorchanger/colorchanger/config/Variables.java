@@ -5,7 +5,6 @@ import java.util.List;
 
 import colorchanger.colorchanger.enums.Methode;
 import colorchanger.colorchanger.enums.Mode;
-import colorchanger.colorchanger.enums.OneDiff;
 import javafx.scene.shape.Rectangle;
 
 public abstract class Variables {
@@ -21,7 +20,5 @@ public abstract class Variables {
 	public static List<Rectangle> prevColors = new ArrayList<Rectangle>(Variables.nbCouleurs);
 
 	public static List<Rectangle> beforeOpti = new ArrayList<Rectangle>(Variables.nbCouleurs);
-	
-	public static OneDiff ondediff = OneDiff.DIFF;
 	
 }

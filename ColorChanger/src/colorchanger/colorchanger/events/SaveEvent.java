@@ -14,8 +14,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-
-
 public class SaveEvent implements EventHandler<MouseEvent> {
 
 	@Override

@@ -11,7 +11,6 @@ import colorchanger.colorchanger.comparators.ColorComparator;
 import colorchanger.colorchanger.config.Variables;
 import colorchanger.colorchanger.enums.Methode;
 import colorchanger.colorchanger.enums.Mode;
-import colorchanger.colorchanger.enums.OneDiff;
 import colorchanger.colorchanger.events.Optimisation;
 import colorchanger.colorchanger.graphiques.Ecran;
 import colorchanger.colorchanger.graphiques.PickColor;
@@ -54,15 +53,14 @@ public class ColorChangeGrid extends GridPane {
 					this.couleurs.add(list.get(i));
 				} else {
 					Rectangle rect = new Rectangle();
-					rect.setWidth(40);
-					rect.setHeight(40);
+					rect.setWidth(30);
+					rect.setHeight(30);
 					rect.setFill(Color.PINK);
 					this.couleurs.add(rect);
 				}
 			}
-		} else if (Variables.ondediff.equals(OneDiff.DIFF)){
+		} else {
 			Ecran.erreur.setText("");
-			
 			this.couleurs = new ArrayList<Rectangle>(Variables.nbCouleurs);
 			for (int i = 0; i < Variables.nbCouleurs; i++) {
 				if (i < list.size()) {
@@ -70,27 +68,9 @@ public class ColorChangeGrid extends GridPane {
 				} else {
 					Random rand = new Random();
 					Rectangle rect = new Rectangle();
-					rect.setWidth(40);
-					rect.setHeight(40);
+					rect.setWidth(30);
+					rect.setHeight(30);
 					rect.setFill(Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble()));
-					this.couleurs.add(rect);
-				}
-			}
-		}else {
-		  Ecran.erreur.setText("");
-			this.couleurs = new ArrayList<Rectangle>(Variables.nbCouleurs);
-			Random rand = new Random();
-			int red = rand.nextInt(255/Variables.nbCouleurs);
-			int green = rand.nextInt(255/Variables.nbCouleurs);
-			int blue = rand.nextInt(255/Variables.nbCouleurs);
-			for (int i = 0; i < Variables.nbCouleurs; i++) {
-				if (i < list.size()) {
-					this.couleurs.add(list.get(i));
-				} else {
-					Rectangle rect = new Rectangle();
-					rect.setWidth(40);
-					rect.setHeight(40);
-					rect.setFill(Color.rgb(red+i*255/Variables.nbCouleurs, green+i*255/Variables.nbCouleurs, blue+i*255/Variables.nbCouleurs));
 					this.couleurs.add(rect);
 				}
 			}
@@ -109,8 +89,8 @@ public class ColorChangeGrid extends GridPane {
 		this.gris = new ArrayList<Rectangle>(Variables.nbCouleurs);
 		for (int i = 0; i < Variables.nbCouleurs; i++) {
 			Rectangle rect = new Rectangle();
-			rect.setWidth(40);
-			rect.setHeight(40);
+			rect.setWidth(30);
+			rect.setHeight(30);
 			rect.setFill(Color.gray(grayLevelOf((Color) this.couleurs.get(i).getFill())));
 			this.gris.add(rect);
 		}

@@ -1,6 +1,6 @@
 package colorchanger.colorchanger.comparators;
 
-import java.util.Comparator;
+import java.util.Comparator; 
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;

@@ -19,7 +19,6 @@ public abstract class Optimisation {
 			Ecran ecran = (Ecran) ((Stage) (((Button) (e.getSource())).getScene().getWindow())).getScene().getRoot();
 			Variables.prevColors = ecran.getGridColor().getColors();
 			
-			//System.out.println(Variables.beforeOpti);
 			
 			ArrayList<Integer> indice = colorChanged(couleur);
 			if (indice.size() == 0) {
@@ -56,8 +55,6 @@ public abstract class Optimisation {
 				}
 			} catch (Exception exc) {}
 
-			//System.out.println(Variables.beforeOpti);
-			
 		});
 	}
 	public static boolean goodDifference(ArrayList<Double> colorsSum, double sum) {

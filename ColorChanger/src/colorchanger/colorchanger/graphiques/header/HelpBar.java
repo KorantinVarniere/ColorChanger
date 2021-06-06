@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 
 public class HelpBar extends HBox {
 
-	private Image img = new Image("help.jpg", 30, 30, true, true);
+	private Image img = new Image("help.png", 30, 30, true, true);
 	private ImageView imgView = new ImageView(img);
 	
 	public HelpBar() {

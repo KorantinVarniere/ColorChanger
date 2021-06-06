@@ -27,7 +27,7 @@ public class MoteurGraphique {
 	public void configurer() {
 		this.stage.setScene(this.scene);
 		
-		this.stage.getIcons().add(new Image("icon.png"));
+		this.stage.getIcons().add(new Image("icone.png"));
 		this.stage.setTitle(Configuration.TITRE);
 		this.stage.setHeight(Configuration.HAUTEUR_ECRAN);
 		this.stage.setWidth(Configuration.LARGEUR_ECRAN);

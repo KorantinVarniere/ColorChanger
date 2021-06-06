@@ -53,8 +53,8 @@ public class ColorChangeGrid extends GridPane {
 					this.couleurs.add(list.get(i));
 				} else {
 					Rectangle rect = new Rectangle();
-					rect.setWidth(30);
-					rect.setHeight(30);
+					rect.setWidth(40);
+					rect.setHeight(40);
 					rect.setFill(Color.PINK);
 					this.couleurs.add(rect);
 				}
@@ -68,13 +68,38 @@ public class ColorChangeGrid extends GridPane {
 				} else {
 					Random rand = new Random();
 					Rectangle rect = new Rectangle();
-					rect.setWidth(30);
-					rect.setHeight(30);
-					rect.setFill(Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble()));
+					double red = rand.nextDouble();
+					double green = rand.nextDouble();
+					double blue = rand.nextDouble();
+					rect.setWidth(40);
+					rect.setHeight(40);
+					rect.setFill(Color.color(red, green, blue));
 					this.couleurs.add(rect);
 				}
 			}
 		}
+		/*  une seule couleur avec plusieur intancité
+		 * Ecran.erreur.setText("");
+			this.couleurs = new ArrayList<Rectangle>(Variables.nbCouleurs);
+			Random rand = new Random();
+			int red = rand.nextInt(255/Variables.nbCouleurs);
+			System.out.println(red);
+			int green = rand.nextInt(255/Variables.nbCouleurs);
+			System.out.println(green);
+			int blue = rand.nextInt(255/Variables.nbCouleurs);
+			System.out.println(blue);
+			for (int i = 0; i < Variables.nbCouleurs; i++) {
+				if (i < list.size()) {
+					this.couleurs.add(list.get(i));
+				} else {
+					Rectangle rect = new Rectangle();
+					rect.setWidth(40);
+					rect.setHeight(40);
+					rect.setFill(Color.rgb(red+i*255/Variables.nbCouleurs, green+i*255/Variables.nbCouleurs, blue+i*255/Variables.nbCouleurs));
+					this.couleurs.add(rect);
+				}
+			}
+		 */
 
 		Optimisation.optimiserColor(Variables.customColors);
 		Collections.sort(this.couleurs, new ColorComparator());
@@ -89,8 +114,8 @@ public class ColorChangeGrid extends GridPane {
 		this.gris = new ArrayList<Rectangle>(Variables.nbCouleurs);
 		for (int i = 0; i < Variables.nbCouleurs; i++) {
 			Rectangle rect = new Rectangle();
-			rect.setWidth(30);
-			rect.setHeight(30);
+			rect.setWidth(40);
+			rect.setHeight(40);
 			rect.setFill(Color.gray(grayLevelOf((Color) this.couleurs.get(i).getFill())));
 			this.gris.add(rect);
 		}

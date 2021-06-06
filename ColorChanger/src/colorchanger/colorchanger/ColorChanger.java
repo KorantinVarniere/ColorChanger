@@ -1,8 +1,8 @@
 package colorchanger.colorchanger;
 
-import colorchanger.colorchanger.graphiques.MoteurGraphique;
+import colorchanger.colorchanger.graphiques.MoteurGraphique;  
 import javafx.application.Application;
-import javafx.stage.Stage; 
+import javafx.stage.Stage;
 
 
 public class ColorChanger extends Application {
@@ -12,7 +12,7 @@ public class ColorChanger extends Application {
 	}
 
 	@Override
-	public void start(@SuppressWarnings("exports") Stage stage) throws Exception {
+	public void start(Stage stage) throws Exception {
 		MoteurGraphique mg = new MoteurGraphique(stage);
 		
 		mg.afficher();
